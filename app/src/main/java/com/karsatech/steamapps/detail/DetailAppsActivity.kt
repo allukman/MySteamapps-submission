@@ -1,5 +1,6 @@
 package com.karsatech.steamapps.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
@@ -82,6 +83,8 @@ class DetailAppsActivity : AppCompatActivity() {
                 .load(it.largeImage)
                 .into(binding.content.ivBanner)
 
+
+
             var statusFavorite = it.isFavorite
             setStatusFavorite(statusFavorite)
 
@@ -91,6 +94,13 @@ class DetailAppsActivity : AppCompatActivity() {
                 setStatusFavorite(statusFavorite)
             }
         }
+
+        binding.content.ivBanner.setOnClickListener {
+            val intent = Intent(this, ImageActivity::class.java)
+            intent.putExtra(ImageActivity.TAG, data!!.largeImage)
+            startActivity(intent)
+        }
+
     }
 
     private fun showDetailSteamApp(data: DetailSteamResponse) {

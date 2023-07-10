@@ -1,28 +1,28 @@
 package com.karsatech.steamapps.core.data.source.local
 
 import com.karsatech.steamapps.core.data.source.local.entity.SteamEntity
-import com.karsatech.steamapps.core.data.source.local.room.TourismDao
+import com.karsatech.steamapps.core.data.source.local.room.SteamDao
 import kotlinx.coroutines.flow.Flow
 
-class LocalDataSource private constructor(private val tourismDao: TourismDao) {
+class LocalDataSource private constructor(private val steamDao: SteamDao) {
 
     companion object {
         private var instance: LocalDataSource? = null
 
-        fun getInstance(tourismDao: TourismDao): LocalDataSource =
+        fun getInstance(steamDao: SteamDao): LocalDataSource =
             instance ?: synchronized(this) {
-                instance ?: LocalDataSource(tourismDao)
+                instance ?: LocalDataSource(steamDao)
             }
     }
 
-    fun getAllSteam(): Flow<List<SteamEntity>> = tourismDao.getAllSteam()
+    fun getAllSteam(): Flow<List<SteamEntity>> = steamDao.getAllSteam()
 
-    fun getFavoriteSteam(): Flow<List<SteamEntity>> = tourismDao.getFavoriteSteam()
+    fun getFavoriteSteam(): Flow<List<SteamEntity>> = steamDao.getFavoriteSteam()
 
-    suspend fun insertSteam(steamList: List<SteamEntity>) = tourismDao.insertSteam(steamList)
+    suspend fun insertSteam(steamList: List<SteamEntity>) = steamDao.insertSteam(steamList)
 
     fun setFavoriteSteam(steam: SteamEntity, newState: Boolean) {
         steam.isFavorite = newState
-        tourismDao.updateFavoriteSteam(steam)
+        steamDao.updateFavoriteSteam(steam)
     }
 }

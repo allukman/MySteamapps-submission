@@ -7,23 +7,21 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.karsatech.steamapps.core.data.source.local.entity.SteamEntity
 
-//@Database(entities = [TourismEntity::class], version = 1, exportSchema = false)
-
 @Database(entities = [SteamEntity::class], version = 1, exportSchema = false)
-abstract class TourismDatabase : RoomDatabase() {
+abstract class SteamDatabase : RoomDatabase() {
 
-    abstract fun tourismDao(): TourismDao
+    abstract fun steamDao(): SteamDao
 
     companion object {
         @Volatile
-        private var INSTANCE: TourismDatabase? = null
+        private var INSTANCE: SteamDatabase? = null
 
-        fun getInstance(context: Context): TourismDatabase =
+        fun getInstance(context: Context): SteamDatabase =
             INSTANCE ?: synchronized(this) {
             val instance = Room.databaseBuilder(
                 context.applicationContext,
-                TourismDatabase::class.java,
-                "Tourism.db"
+                SteamDatabase::class.java,
+                "Steam.db"
             )
                 .fallbackToDestructiveMigration()
                 .build()

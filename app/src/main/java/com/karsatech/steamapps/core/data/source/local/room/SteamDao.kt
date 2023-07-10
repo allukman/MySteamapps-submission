@@ -9,7 +9,7 @@ import com.karsatech.steamapps.core.data.source.local.entity.SteamEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface TourismDao {
+interface SteamDao {
 
     @Query("SELECT * FROM steam")
     fun getAllSteam(): Flow<List<SteamEntity>>

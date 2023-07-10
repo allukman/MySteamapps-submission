@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SteamApps"
         tools:targetApi="31">
         <activity
+            android:name=".detail.ImageActivity"
+            android:exported="false" />
+        <activity
             android:name=".detail.DetailAppsActivity"
             android:exported="false" />
         <activity
