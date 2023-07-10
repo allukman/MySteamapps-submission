@@ -11,26 +11,15 @@ import com.karsatech.steamapps.core.utils.AppExecutors
 import com.karsatech.steamapps.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SteamRepository private constructor(
+@Singleton
+class SteamRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : ISteamRepository {
-
-    companion object {
-        @Volatile
-        private var instance: SteamRepository? = null
-
-        fun getInstance(
-            remoteData: RemoteDataSource,
-            localData: LocalDataSource,
-            appExecutors: AppExecutors
-        ): SteamRepository =
-            instance ?: synchronized(this) {
-                instance ?: SteamRepository(remoteData, localData, appExecutors)
-            }
-    }
 
     override fun getAllSteam(): Flow<Resource<List<Steam>>> =
         object : NetworkBoundResource<List<Steam>, List<SteamResponse>>() {

@@ -3,17 +3,11 @@ package com.karsatech.steamapps.core.data.source.local
 import com.karsatech.steamapps.core.data.source.local.entity.SteamEntity
 import com.karsatech.steamapps.core.data.source.local.room.SteamDao
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalDataSource private constructor(private val steamDao: SteamDao) {
-
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(steamDao: SteamDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(steamDao)
-            }
-    }
+@Singleton
+class LocalDataSource @Inject constructor(private val steamDao: SteamDao) {
 
     fun getAllSteam(): Flow<List<SteamEntity>> = steamDao.getAllSteam()
 

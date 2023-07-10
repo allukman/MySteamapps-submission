@@ -13,7 +13,9 @@ import com.google.android.material.navigation.NavigationView
 import com.karsatech.steamapps.databinding.ActivityMainBinding
 import com.karsatech.steamapps.favorite.FavoriteFragment
 import com.karsatech.steamapps.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding

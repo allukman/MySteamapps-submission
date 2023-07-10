@@ -3,30 +3,26 @@ package com.karsatech.steamapps.detail
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.karsatech.steamapps.R
 import com.karsatech.steamapps.core.data.Resource
 import com.karsatech.steamapps.core.data.source.remote.response.DetailSteamResponse
 import com.karsatech.steamapps.core.domain.model.Steam
-import com.karsatech.steamapps.core.ui.ViewModelFactory
 import com.karsatech.steamapps.core.utils.applyStrikeThrough
 import com.karsatech.steamapps.core.utils.withCurrencyFormat
 import com.karsatech.steamapps.databinding.ActivityDetailAppsBinding
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailAppsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailAppsBinding
-    private lateinit var detailAppsViewModel: DetailAppsViewModel
+    private val detailAppsViewModel: DetailAppsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +30,6 @@ class DetailAppsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
-        val factory = ViewModelFactory.getInstance(this)
-        detailAppsViewModel = ViewModelProvider(this, factory)[DetailAppsViewModel::class.java]
 
         val detailSteam = intent.getParcelableExtra<Steam>(EXTRA_DATA)
         getDetailApp(detailSteam!!)

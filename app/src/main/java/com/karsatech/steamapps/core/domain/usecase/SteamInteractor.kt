@@ -2,8 +2,9 @@ package com.karsatech.steamapps.core.domain.usecase
 
 import com.karsatech.steamapps.core.domain.model.Steam
 import com.karsatech.steamapps.core.domain.repository.ISteamRepository
+import javax.inject.Inject
 
-class SteamInteractor(private val tourismRepository: ISteamRepository): SteamUseCase {
+class SteamInteractor @Inject constructor(private val tourismRepository: ISteamRepository): SteamUseCase {
 
     override fun getAllSteam() = tourismRepository.getAllSteam()
 
