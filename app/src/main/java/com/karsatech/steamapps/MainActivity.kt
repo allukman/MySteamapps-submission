@@ -2,16 +2,16 @@ package com.karsatech.steamapps
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.karsatech.steamapps.databinding.ActivityMainBinding
-import com.karsatech.steamapps.favorite.FavoriteFragment
 import com.karsatech.steamapps.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,8 +56,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
-                fragment = FavoriteFragment()
-                title = getString(R.string.menu_favorite)
+//                fragment = FavoriteFragment()
+//                title = getString(R.string.menu_favorite)
+                val uri = Uri.parse("steamapps://favorite")
+                startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
             R.id.nav_setting -> {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
