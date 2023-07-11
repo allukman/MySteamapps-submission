@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.karsatech.steamapps.R
+import com.karsatech.steamapps.core.R
 import com.karsatech.steamapps.core.domain.model.Steam
 import com.karsatech.steamapps.core.utils.applyStrikeThrough
 import com.karsatech.steamapps.core.utils.withCurrencyFormat
-import com.karsatech.steamapps.databinding.ItemListTourismBinding
+import com.karsatech.steamapps.core.databinding.ItemListTourismBinding
 
 class SteamAdapter : RecyclerView.Adapter<SteamAdapter.ListViewHolder>() {
 

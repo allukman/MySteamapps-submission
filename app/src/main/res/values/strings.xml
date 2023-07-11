@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Steam App</string>
-    <string name="image_description">Image</string>
-    <string name="text_primary">Sample of title text</string>
-    <string name="text_subtitle">Sample of subtitle text</string>
-    <string name="text_discount">-60%</string>
     <string name="about_this_game">ABOUT THIS GAME</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

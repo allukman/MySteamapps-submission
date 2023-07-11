@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
             R.id.nav_source_code -> {
-                implicitIntent("https://github.com/allukman")
+                implicitIntent("https://github.com/allukman/Steam-app")
             }
         }
         if (fragment != null) {
