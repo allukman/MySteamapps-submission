@@ -43,15 +43,15 @@ class DetailAppsActivity : AppCompatActivity() {
         detailAppsViewModel.getDetailApps(detail.steamId.toString()).observe(this) { data ->
             if (data != null) {
                 when (data) {
-                    is com.karsatech.steamapps.core.data.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                    is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
 
-                    is com.karsatech.steamapps.core.data.Resource.Success -> {
+                    is Resource.Success -> {
                         binding.progressBar.visibility = View.GONE
                         showDetailSteamApp(data.data!!)
                         showSteamApp(detail)
                     }
 
-                    is com.karsatech.steamapps.core.data.Resource.Error -> {
+                    is Resource.Error -> {
                         Log.d("DetailActivity", "Error")
                     }
                 }

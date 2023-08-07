@@ -13,14 +13,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SteamApps"
-        tools:targetApi="31">
+        android:theme="@style/Theme.SteamApps">
         <activity
             android:name=".detail.ImageActivity"
-            android:exported="false" />
+            android:exported="true"/>
         <activity
             android:name=".detail.DetailAppsActivity"
-            android:exported="false" />
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -33,14 +33,14 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getDetailApp(id: String) : Flow<com.karsatech.steamapps.core.data.Resource<DetailSteamResponse>> {
+    fun getDetailApp(id: String) : Flow<Resource<DetailSteamResponse>> {
         return flow {
-            emit(com.karsatech.steamapps.core.data.Resource.Loading())
+            emit(Resource.Loading())
             try {
                 val response = apiService.getDetailApps(id)
-                emit(com.karsatech.steamapps.core.data.Resource.Success(response))
+                emit(Resource.Success(response))
             } catch (e: Exception) {
-                emit(com.karsatech.steamapps.core.data.Resource.Error(e.toString()))
+                emit(Resource.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
