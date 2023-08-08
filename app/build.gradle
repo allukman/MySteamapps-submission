@@ -10,7 +10,7 @@ apply from: '../shared_dependencies.gradle'
 
 android {
     namespace 'com.karsatech.steamapps'
-    compileSdk 33
+    compileSdk 30
 
     defaultConfig {
         applicationId "com.karsatech.steamapps"
