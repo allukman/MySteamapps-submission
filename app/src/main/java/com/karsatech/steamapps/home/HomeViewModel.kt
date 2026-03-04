@@ -8,5 +8,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(steamUseCase: SteamUseCase) : ViewModel() {
-    val tourism = steamUseCase.getAllSteam().asLiveData()
+    val steamData = steamUseCase.getAllSteam().asLiveData()
 }

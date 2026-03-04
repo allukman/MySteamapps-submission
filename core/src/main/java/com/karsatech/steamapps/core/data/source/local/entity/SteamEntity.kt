@@ -1,6 +1,5 @@
 package com.karsatech.steamapps.core.data.source.local.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "steam")
 data class SteamEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo(name = "id")
     var steamId: Int,
 

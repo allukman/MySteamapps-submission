@@ -2,6 +2,7 @@ package com.karsatech.steamapps.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karsatech.steamapps.R
-import com.karsatech.steamapps.core.data.Resource
+import com.karsatech.steamapps.core.data.Resource.Error
+import com.karsatech.steamapps.core.data.Resource.Loading
+import com.karsatech.steamapps.core.data.Resource.Success
 import com.karsatech.steamapps.core.ui.SteamAdapter
 import com.karsatech.steamapps.databinding.FragmentHomeBinding
 import com.karsatech.steamapps.detail.DetailAppsActivity
@@ -26,7 +29,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,26 +46,27 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
             }
 
-            homeViewModel.tourism.observe(viewLifecycleOwner) { tourism ->
-                if (tourism != null) {
-                    when (tourism) {
-                        is com.karsatech.steamapps.core.data.Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is com.karsatech.steamapps.core.data.Resource.Success -> {
+            homeViewModel.steamData.observe(viewLifecycleOwner) { steam ->
+                if (steam != null) {
+                    when (steam) {
+                        is Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is Success -> {
                             binding.progressBar.visibility = View.GONE
-                            steamAdapter.setData(tourism.data)
+                            Log.d("STEAM_ID", steam.data?.map { it.steamId }.toString())
+                            steamAdapter.setData(steam.data.orEmpty())
                         }
 
-                        is com.karsatech.steamapps.core.data.Resource.Error -> {
+                        is Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text =
-                                tourism.message ?: getString(R.string.something_wrong)
+                                steam.message ?: getString(R.string.something_wrong)
                         }
                     }
                 }
             }
 
-            with(binding.rvTourism) {
+            with(binding.rvSteam) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 adapter = steamAdapter

@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     tools:context=".detail.ImageActivity">
 
     <ImageView
         android:id="@+id/iv_detail_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scaleType="fitCenter"
         android:layout_marginTop="@dimen/dimen_16dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/description_detail_image"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0.4"
-        app:cardCornerRadius="180dp"
-        app:cardBackgroundColor="@color/white"
         android:layout_margin="16dp"
+        android:alpha="0.4"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="180dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -33,7 +33,8 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_back"/>
+            android:contentDescription="@string/description_detail_image_back"
+            android:src="@drawable/ic_back" />
 
     </androidx.cardview.widget.CardView>
 

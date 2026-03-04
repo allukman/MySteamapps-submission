@@ -1,13 +1,12 @@
 package com.karsatech.steamapps
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
@@ -55,17 +54,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 fragment = HomeFragment()
                 title = getString(R.string.app_name)
             }
+
             R.id.nav_favorite -> {
-//                fragment = FavoriteFragment()
-//                title = getString(R.string.menu_favorite)
-                val uri = Uri.parse("steamapps://favorite")
+                val uri = "steamapps://favorite".toUri()
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
+
             R.id.nav_setting -> {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
+
             R.id.nav_source_code -> {
-                implicitIntent("https://github.com/allukman/Steam-app")
+                implicitIntent()
             }
         }
         if (fragment != null) {
@@ -79,9 +79,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun implicitIntent(url: String) {
+    private fun implicitIntent() {
+        val url = "https://github.com/allukman/Steam-app"
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(url)
+        intent.data = url.toUri()
         startActivity(intent)
     }
 }

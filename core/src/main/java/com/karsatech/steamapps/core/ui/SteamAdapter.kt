@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.karsatech.steamapps.core.R
+import com.karsatech.steamapps.core.databinding.ItemListSteamBinding
 import com.karsatech.steamapps.core.domain.model.Steam
 import com.karsatech.steamapps.core.utils.applyStrikeThrough
 import com.karsatech.steamapps.core.utils.withCurrencyFormat
-import com.karsatech.steamapps.core.databinding.ItemListTourismBinding
 
 class SteamAdapter : RecyclerView.Adapter<SteamAdapter.ListViewHolder>() {
 
@@ -24,7 +24,9 @@ class SteamAdapter : RecyclerView.Adapter<SteamAdapter.ListViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_list_tourism, parent, false))
+        ListViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_list_steam, parent, false)
+        )
 
     override fun getItemCount() = listData.size
 
@@ -34,17 +36,19 @@ class SteamAdapter : RecyclerView.Adapter<SteamAdapter.ListViewHolder>() {
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemListTourismBinding.bind(itemView)
+        private val binding = ItemListSteamBinding.bind(itemView)
         fun bind(data: Steam) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(data.headerImage)
                     .into(ivItemImage)
                 tvItemTitle.text = data.name
-                tvDiscount.text = "-${data.discountPercent}%"
+                tvDiscount.text = buildString {
+                    append("-")
+                    append(data.discountPercent)
+                }
                 tvOriginalPrice.text = data.originalPrice.withCurrencyFormat()
                 tvFinalPrice.text = data.finalPrice.withCurrencyFormat()
-
                 tvOriginalPrice.applyStrikeThrough()
             }
         }

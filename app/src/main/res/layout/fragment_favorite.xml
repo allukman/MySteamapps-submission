@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     tools:context=".favorite.FavoriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_tourism"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_list_tourism" />
+        tools:listitem="@layout/item_list_steam" />
 
     <include
         android:id="@+id/view_empty"

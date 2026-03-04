@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Theme.SteamApps" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/elm</item>
@@ -6,11 +6,6 @@
         <item name="windowNoTitle">true</item>
         <item name="android:textColor">@color/black</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="Theme.SteamApps.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.SteamApps.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

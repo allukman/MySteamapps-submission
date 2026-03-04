@@ -10,12 +10,11 @@
     <string name="menu_favorite">Favorite</string>
     <string name="menu_sc">Source Code</string>
 
-    <string name="title_activity_detail_home">DetailHomeActivity</string>
     <string name="no_data">Empty data</string>
     <string name="something_wrong">Oops.. something went wrong</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_favorite">Favorite</string>
-
+    <string name="description_detail_image">description detail image</string>
+    <string name="description_detail_image_back">description detail image back</string>
+    <string name="description_home_image_background">description home image background</string>
 
 </resources>
